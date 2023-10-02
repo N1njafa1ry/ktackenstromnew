@@ -15,7 +15,7 @@
     <!-- Add this part right above the <div class="nav"> in the body -->
 
 <div class="header">
-    <a href="index.html"><img src="https://uploads.staticjw.com/kt/ktackenstrom/kennethtackenstromwhite002.png" alt="Logo"></a>
+    <a href="index.html"><img src="https://uploads.staticjw.com/kt/ktackenstrom/kennethtackenstromwhite002.png" alt="Logo" width="80%" height="auto"></a>
 </div>
 <a href="index.html"><button id="closeAllPopupsBtn">HOME</button></a>
 <div id="iconMenu">
@@ -121,6 +121,12 @@ background-position: center;
 background-repeat: no-repeat;
 }
 
+.header img {
+    max-width: 100%;
+    height: auto;
+}
+
+
 .header h1 {
     font-size: 2em;
     margin-bottom: 10px;
@@ -137,8 +143,8 @@ background-repeat: no-repeat;
 }
 
 .image-containerone img {
-    width: auto;   /* Width of the square image */
-    height: 100%;  /* Height of the square image */
+    max-width: 100%;   /* Width of the square image */
+    height: auto;  /* Height of the square image */
     object-fit: cover;  /* This ensures the image covers the entire square without being distorted */
     margin-right: 20px;  /* Space between the image and the text */
 }
@@ -349,6 +355,13 @@ footer {
         font-size: 18px;
         letter-spacing: 20px;
     }
+
+    .nav-btn:hover {
+        font-size: 18px;
+        background-color: transparent;
+ /* ... existing styles ... */
+ transform: scale(1.2); /* This scales the button to 110% of its original size */
+}
     
     .header h1 {
         font-size: 1.5em;
@@ -364,6 +377,7 @@ footer {
     
     .image-containerone img {
         margin: 0 auto 20px auto;
+        size: 18px;
     }
     
     .text-container {
@@ -377,6 +391,13 @@ footer {
         font-size: 18px;
         letter-spacing: 10px;
     }
+
+    .nav-btn:hover {
+        font-size: 18px;
+        background-color: transparent;
+ /* ... existing styles ... */
+ transform: scale(1.2); /* This scales the button to 110% of its original size */
+}
     
     .header h1 {
         font-size: 1.2em;
