@@ -77,3 +77,11 @@ function closeImage() {
     modal.style.display = "none";
 }
 
+document.getElementById("toggleButton").addEventListener("click", function() {
+    var iconsDiv = document.querySelector(".icons");
+    if (iconsDiv.style.display === "none" || iconsDiv.style.display === "") {
+        iconsDiv.style.display = "flex";
+    } else {
+        iconsDiv.style.display = "none";
+    }
+});

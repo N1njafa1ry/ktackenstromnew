@@ -7,19 +7,30 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body>
+    <div class="content-wrap">
     <!-- Add this part right above the <div class="nav"> in the body -->
 
 <div class="header">
     <a href="index.html"><img src="https://uploads.staticjw.com/kt/ktackenstrom/kennethtackenstromwhite002.png" alt="Logo"></a>
 </div>
-<button id="closeAllPopupsBtn">Close All Popups</button>
-    <div class="nav">
+<a href="index.html"><button id="closeAllPopupsBtn">HOME</button></a>
+<div id="iconMenu">
+    <div class="icons">
+        <a href="mailto:youremail@example.com" class="icon"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.facebook.com/yourprofile" target="_blank" class="icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/yourprofile" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
+    </div>
+    <button id="toggleButton">☰</button>
+</div>    
+<div class="nav">
         <button class="nav-btn" onclick="togglePopup('content1')" style="background-image: url(https://uploads.staticjw.com/kt/ktackenstrom/nav02.jpg);">ABOUT</button>
         <div id="content1" class="popup-content">
             <div class="column-container">
-                <div class="image-container">
+                <div class="image-containerone">
                     <img src="https://uploads.staticjw.com/ta/tackochlovsalen/kenneth003.jpg" alt="Description of Image">
                 </div>
                 <div class="text-container">
@@ -35,21 +46,17 @@
         <button class="nav-btn" onclick="togglePopup('content3')" style="background-image: url(https://uploads.staticjw.com/kt/ktackenstrom/nav04.jpg);">GALLERY</button>
         <div id="content3" class="popup-content gallery-content">
             <div class="gallery">
-                <a href="#" class="image-link" onclick="showImage(['https://uploads.staticjw.com/ta/tackochlovsalen/kenneth003.jpg', 'https://uploads.staticjw.com/ta/tackochlovsalen/img-0625.jpg'], 0); return false;">
-                    <img src="https://uploads.staticjw.com/ta/tackochlovsalen/kenneth003.jpg" alt="Image 1">
-                </a>
-                <a href="#" class="image-link" onclick="showImage(['https://uploads.staticjw.com/ta/tackochlovsalen/kenneth003.jpg', 'https://uploads.staticjw.com/ta/tackochlovsalen/img-0625.jpg'], 1); return false;">
-                    <img src="https://uploads.staticjw.com/ta/tackochlovsalen/img-0625.jpg" alt="Image 2">
-                </a>
+                <div class="image-container" style="margin-top: 5%;">
+                    <img src="https://uploads.staticjw.com/kt/ktackenstrom/img-3022.jpg" alt="Description of Image 1">
+                </div>
+                <div class="image-container">
+                    <img src="https://uploads.staticjw.com/kt/ktackenstrom/img-3757.jpg" alt="Description of Image 2">
+                </div>
+                <div class="image-container">
+                    <img src="https://uploads.staticjw.com/kt/ktackenstrom/butoning-1-1.jpg" alt="Description of Image 3">
+                </div>
+                <!-- Add more images as needed -->
             </div>
-        </div>
-        
-        <!-- Modified Modal Section -->
-        <div id="imageModal" class="modal">
-            <span class="close cursor" onclick="closeImage()">&times;</span>
-            <div class="modal-content" id="modalSlides"></div>
-            <a class="prev" onclick="slideImage(-1)">&#10094;</a>
-            <a class="next" onclick="slideImage(1)">&#10095;</a>
         </div>
         <button class="nav-btn" onclick="togglePopup('content4')" style="background-image: url(https://uploads.staticjw.com/kt/ktackenstrom/nav05.jpg);">PRODUCTS</button>
         <div id="content4" class="popup-content">
@@ -57,6 +64,13 @@
         </div>
         <!-- You can continue with more navigation tabs and content sections similarly -->
     </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            © 2023 Your Company Name. All rights reserved.
+        </div>
+    </footer>
+    
 </body>
 <style>
 
@@ -79,6 +93,12 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
         background-color: #000000;
         overflow-x: hidden;
+        display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     }
     /* Add these styles at the end of your current styles or wherever you prefer in the <style> section */
 
@@ -86,7 +106,7 @@ html, body {
     text-align: center;
     background-image: url(https://uploads.staticjw.com/kt/ktackenstrom/navtop.jpg);
     padding: 20px 0;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     color: white;
     /* Ensure the image covers the button. */
 background-size: cover; 
@@ -116,7 +136,7 @@ background-repeat: no-repeat;
     padding: 0px;
 }
 
-.image-container img {
+.image-containerone img {
     width: auto;   /* Width of the square image */
     height: 100%;  /* Height of the square image */
     object-fit: cover;  /* This ensures the image covers the entire square without being distorted */
@@ -131,19 +151,81 @@ background-repeat: no-repeat;
 
 #closeAllPopupsBtn {
     position: fixed;
-    top: 20px;
+    bottom: 10px;
     right: 20px;
-    padding: 10px 20px;
-    background-color: rgba(0,0,0,0.6);
+    padding: 10px 15px;
+    background-color: transparent;
     color: white;
     border: none;
     cursor: pointer;
-    z-index: 2000; /* Ensure the button is always on top */
+    z-index: 1000; /* Ensure the button is always on bottpm */
     transition: 0.3s ease-in-out;
+    letter-spacing: 10px;
+    font-size: 16px;
+    border-radius: 50%;
 }
 
 #closeAllPopupsBtn:hover {
-    background-color: rgba(0,0,0,0.8);
+    font-size: 16px;
+        background-color: transparent;
+ /* ... existing styles ... */
+ transform: scale(1.2); /* This scales the button to 110% of its original size */
+}
+
+#iconMenu {
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    z-index: 1000; 
+}
+
+#toggleButton {
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 5px;
+    font-size: 18px;
+    border-radius: 50%;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+#toggleButton:hover {
+    font-size: 18px;
+        background-color: transparent;
+ /* ... existing styles ... */
+ transform: scale(1.2); /* This scales the button to 110% of its original size */
+}
+
+.icons {
+    display: none;
+    flex-direction: column-reverse;
+    gap: 10px;
+    position: absolute;
+    bottom: 50px;
+}
+
+.icon {
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.icon:hover {
+    font-size: 18px;
+        background-color: transparent;
+ /* ... existing styles ... */
+ transform: scale(1.2); /* This scales the button to 110% of its original size */
 }
 
     
@@ -162,7 +244,7 @@ background-repeat: no-repeat;
         margin-bottom: 25px;
         cursor: pointer;
         font-size: 42px;
-        letter-spacing: 16px;
+        letter-spacing: 40px;
         transition: transform 0.5s ease; /* This ensures a smooth transition effect */
 /* Ensure the image covers the button. */
 background-size: cover; 
@@ -205,103 +287,58 @@ background-repeat: no-repeat;
     animation: slideDownEntrance 0.5s forwards; /* Apply the keyframe animation */
 }
 
-    
-/* Gallery specific styles */
-.gallery-content {
-    padding: 20px;
-    transition: opacity 0.5s ease-in-out; /* Smooth fade-in effect */
-}
-
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Creates a responsive number of columns */
-    gap: 20px; /* Space between images */
-    overflow-y: auto; /* Allows vertical scrolling if images overflow */
-    max-height: 80vh; /* Ensures the gallery doesn't take up the entire viewport height */
+    width: 100vw; /* 100% of viewport width */
 }
 
-/* Adjust image styling within the gallery */
-.gallery img {
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 45px;
+    margin-bottom: 8%; /* 100% of viewport height */
+ margin-top: 0%;
+    overflow: hidden; /* Prevent the image from exceeding container */
+}
+
+.image-container img {
+    max-width: 90%;
+    max-height: 90%;
+    display: block; /* Remove any default spacing */
+}
+
+/* This will push the footer to the bottom */
+.content-wrap {
+    flex: 1;
+}
+
+footer {
     width: 100%;
-    height: auto;
-    border-radius: 5px; /* Optional: adds rounded corners to images */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow to images */
-    transition: transform 0.3s ease-in-out; /* Smooth scale effect on hover */
+    background-color: transparent;
+    color: #fff;
 }
 
-.gallery img:hover {
-    transform: scale(0.95); /* Slightly enlarge image on hover */
-}
-
-/* Image modal styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000; /* High z-index to stay on top */
-    padding-top: 10%;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-.modal-content {
+.footer-content {
+    max-width: 1200px;
     margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
 }
 
-.close {
-    position: absolute;
-    right: 25px;
-    top: 15px;
-    color: #f1f1f1;
-    font-size: 35px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
+/* Social icons styling */
+.social-icons {
+    margin-top: 10px;
 }
 
-.close:hover {
-    color: #bbb;
+.social-icons a {
+    color: #fff;               
+    margin-left: 10px;        
+    text-decoration: none;   
 }
 
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -50px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    background-color: rgba(0,0,0,0.8);
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev {
-    left: 0;
-    border-radius: 0 3px 3px 0;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,1);
-}
-
-.modal-slide {
-    width: 100%;
-    display: none;
+.social-icons a:hover {
+    opacity: 0.8;              
 }
 
     </style>
