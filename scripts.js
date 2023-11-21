@@ -1,40 +1,22 @@
-function togglePopup(id) {
-    let content = document.getElementById(id);
-
-    // First, close all popups
-    let allPopups = document.querySelectorAll('.popup-content');
-    for (let popup of allPopups) {
-        popup.style.display = 'none';
-    }
-
-    // Now, show the clicked popup
-    content.style.display = content.style.display === 'none' || content.style.display === '' ? 'block' : 'none';
-}
-
 function togglePopup(contentId) {
-    var content = document.getElementById(contentId);
-    content.style.display = content.style.display === 'none' || content.style.display === '' ? 'block' : 'none';
-    
-    // Toggling the active class
-    if (content.classList.contains('active')) {
-        content.classList.remove('active');
-    } else {
-        content.classList.add('active');
-    }
-}
-
-function togglePopup(contentId) {
-    // Close all popups
     var allPopups = document.querySelectorAll('.popup-content');
+    var sortIcons = document.querySelector('.sort-icons');
+
     for (var i = 0; i < allPopups.length; i++) {
         allPopups[i].style.display = 'none';
         allPopups[i].classList.remove('active');
     }
 
-    // Open the clicked popup
     var content = document.getElementById(contentId);
     content.style.display = 'block';
     content.classList.add('active');
+
+    // Show or hide the sort-icons when content2 is toggled
+    if (contentId === 'content2') {
+        sortIcons.classList.add('active');
+    } else {
+        sortIcons.classList.remove('active');
+    }
 }
 
 let slideIndex = 1;
@@ -76,6 +58,12 @@ function closeImage() {
     var modal = document.getElementById('imageModal');
     modal.style.display = "none";
 }
+function scrollToImage(imageId) {
+    const imageElement = document.getElementById(imageId);
+    if (imageElement) {
+        imageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
 
 document.getElementById("toggleButton").addEventListener("click", function() {
     var iconsDiv = document.querySelector(".icons");
@@ -85,3 +73,5 @@ document.getElementById("toggleButton").addEventListener("click", function() {
         iconsDiv.style.display = "none";
     }
 });
+
+
