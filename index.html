@@ -565,7 +565,7 @@ footer {
     }
     
     .image-containerone img {
-        margin: 0 auto 20px auto;
+        margin: 5% auto 20px auto;
         size: 18px;
     }
     
@@ -574,6 +574,25 @@ footer {
     }
 }
 
+@media (max-width: 768px) {
+    .image-container {
+        display: block; /* Stack image and text vertically */
+        margin-left: 10%;
+    }
+
+    .hover-text {
+        position: static; /* Normal flow under the image */
+        width: 100%; /* Take full width */
+        padding-top: 10px; /* Add some padding for spacing */
+        text-align: center; /* Center align the text */
+        background-color: transparent; /* Optional: Adjust background color */
+        opacity: 1; /* Make it always visible */
+        transform: none; /* Remove any transformations */
+        margin-top: 10px; /* Add space between image and text */
+    }
+
+    /* Rest of your media query styles */
+}
 /* Responsive styles for mobile phones */
 @media (max-width: 480px) {
     .nav-btn {
@@ -584,7 +603,6 @@ footer {
     .nav-btn:hover {
         font-size: 18px;
         background-color: transparent;
- /* ... existing styles ... */
  transform: scale(1.2); /* This scales the button to 110% of its original size */
 }
     
@@ -598,13 +616,6 @@ footer {
     
     .footer-content {
         font-size: 12px;
-    }
-
-    .hover-text {
-        position: static;
-        opacity: 1;
-        background-color: transparent;
-        height: auto; /* Reset the height for mobile */
     }
 
     /* Other responsive styles remain unchanged */
